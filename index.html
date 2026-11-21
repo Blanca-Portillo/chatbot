@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Negocio | Tu negocio, a un audio de distancia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              navy: '#0F3B82',
+              dark: '#081E45',
+              teal: '#00B094',
+              green: '#2ECC71',
+              greenHover: '#25B863',
+              surface: '#F8FAFC',
+              border: '#E2E8F0'
+            }
+          },
+          boxShadow: {
+            'saas': '0 20px 40px -15px rgba(15, 59, 130, 0.08), 0 4px 12px -2px rgba(15, 59, 130, 0.04)',
+            'card3d': '0 25px 50px -12px rgba(8, 30, 69, 0.45)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root { --navy: #0F3B82; --teal: #00A88F; --ink: #08213D; }
+    body { font-family: 'Inter', sans-serif; background-color: #FFFFFF; color: #0F172A; overflow-x: hidden; }
+    h1, h2, h3, .font-display { font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: -0.03em; }
+    .bg-dot-grid { background-image: radial-gradient(rgba(148,163,184,.42) 1px, transparent 1px); background-size: 22px 22px; }
+    .hero-mesh {
+      background:
+        radial-gradient(circle at 88% 18%, rgba(0, 176, 148, 0.20) 0, transparent 28%),
+        radial-gradient(circle at 15% 12%, rgba(15, 59, 130, 0.11) 0, transparent 29%),
+        linear-gradient(135deg, #FFFFFF 0%, #F8FBFF 58%, #F1FBF8 100%);
+    }
+    .hero-mesh::before {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      right: -160px;
+      bottom: -290px;
+      border-radius: 999px;
+      border: 70px solid rgba(46, 204, 113, 0.07);
+    }
+    .nav-shell { transition: background-color .25s ease, box-shadow .25s ease; }
+    .nav-shell.scrolled { background: rgba(255,255,255,.96); box-shadow: 0 10px 30px rgba(15,59,130,.07); }
+    .hero-title { text-wrap: balance; }
+    .hero-copy { text-wrap: pretty; }
+    .eyebrow { letter-spacing: .16em; }
+    .phone-shell {
+      transform: rotate(1.5deg);
+      box-shadow: 0 40px 80px -28px rgba(8,30,69,.48), 0 18px 30px -20px rgba(8,30,69,.28);
+    }
+    .phone-shell::before {
+      content: "";
+      position: absolute;
+      width: 44%;
+      height: 7px;
+      left: 28%;
+      top: 10px;
+      border-radius: 999px;
+      background: #1E293B;
+      z-index: 10;
+    }
+    .floating-status {
+      position: absolute;
+      left: -56px;
+      bottom: 46px;
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 16px;
+      padding: 10px 13px;
+      box-shadow: 0 18px 40px rgba(15,59,130,.14);
+    }
+    .wa-wallpaper { background-color: #EFEAE2; background-image: radial-gradient(#CBD5E1 0.85px, transparent 0.85px); background-size: 16px 16px; }
+    .btn-shimmer { position: relative; overflow: hidden; }
+    .btn-shimmer::after {
+      content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.28), transparent);
+      transition: left 0.6s ease;
+    }
+    .btn-shimmer:hover::after { left: 130%; }
+    .primary-button { box-shadow: 0 12px 24px -12px rgba(0,176,148,.75); }
+    .primary-button:hover { transform: translateY(-2px); box-shadow: 0 16px 28px -12px rgba(0,176,148,.82); }
+    .section-title { text-wrap: balance; }
+    .problem-card, .feature-card, .testimonial-card, .faq-item {
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+    .problem-card:hover, .feature-card:hover, .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 40px -24px rgba(15,59,130,.28);
+    }
+    .solution-card { box-shadow: 0 24px 50px -24px rgba(8,30,69,.58); }
+    .demo-panel { box-shadow: 0 22px 55px -32px rgba(15,59,130,.32); }
+    .quick-action { transition: all .18s ease; }
+    .quick-action:hover { border-color: #99DAD0; background: #F0FBF8; transform: translateY(-1px); }
+    .chat-bubble-me { border-radius: 16px 16px 5px 16px; }
+    .chat-bubble-bot { border-radius: 16px 16px 16px 5px; }
+    .steps-line { position: relative; }
+    .steps-line::before {
+      content: "";
+      position: absolute;
+      left: 16.666%;
+      right: 16.666%;
+      top: 34px;
+      height: 2px;
+      background: linear-gradient(90deg, #0F3B82, #00B094, #2ECC71);
+      opacity: .18;
+    }
+    .faq-item summary { list-style: none; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; float: right; font-size: 20px; color: #64748B; line-height: 20px; }
+    .faq-item[open] summary::after { content: '−'; color: #00A88F; }
+    .faq-item[open] { border-color: #99DAD0; box-shadow: 0 12px 30px -22px rgba(15,59,130,.4); }
+    .payment-section { display: none; }
+    .payment-section.active { display: block; }
+    .senior-mode { font-size: 18px; }
+    .senior-mode h1 { font-size: clamp(2.25rem, 6vw, 4.25rem) !important; }
+    .senior-mode h2 { font-size: clamp(2rem, 5vw, 3.25rem) !important; }
+    .senior-mode h3, .senior-mode p, .senior-mode label,
+    .senior-mode summary, .senior-mode input, .senior-mode textarea,
+    .senior-mode button { font-size: 1.05em; }
+    .senior-mode button, .senior-mode summary { min-height: 52px; }
+    .senior-mode input, .senior-mode textarea { min-height: 52px; }
+    .senior-mode .quick-action { width: 100%; justify-content: center; text-align: center; }
+    .senior-mode .demo-panel { border-width: 2px; }
+    .senior-mode .faq-item summary { padding-right: 42px; }
+    .senior-mode .phone-shell { max-width: 280px; }
+    .senior-toggle {
+      border: 2px solid #BFDBFE;
+      background: #EFF6FF;
+      color: #0F3B82;
+      font-weight: 800;
+    }
+    .senior-mode .senior-toggle {
+      border-color: #00A88F;
+      background: #D1FAE5;
+      color: #065F46;
+    }
+    .senior-mode .senior-advanced { display: none !important; }
+    @media (max-width: 1023px) {
+      .phone-shell { transform: none; }
+      .floating-status { left: -18px; }
+    }
+    @media (max-width: 640px) {
+      .floating-status { display: none; }
+      .steps-line::before { display: none; }
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-brand-teal selection:text-white">
+
+  <!-- NAVBAR -->
+  <header id="site-header" class="nav-shell sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-slate-200/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="#" onclick="switchView('landing'); return false;" class="flex items-center gap-3 group focus:outline-none">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-navy to-brand-teal p-[1.5px] shadow-sm group-hover:scale-105 transition-transform">
+            <div class="w-full h-full bg-white rounded-[10.5px] flex items-center justify-center">
+              <svg class="w-7 h-7" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="logoGrad" x1="8" y1="7" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#0F3B82"/>
+                    <stop offset="1" stop-color="#00B094"/>
+                  </linearGradient>
+                </defs>
+                <path d="M8 14L12 7H36L40 14H8Z" fill="url(#logoGrad)"/>
+                <path d="M8 14C8 16.5 10.2 18.5 13 18.5C15.8 18.5 18 16.5 18 14H8Z" fill="#0F3B82"/>
+                <path d="M18 14C18 16.5 20.2 18.5 23 18.5C25.8 18.5 28 16.5 28 14H18Z" fill="#00B094"/>
+                <path d="M28 14C28 16.5 30.2 18.5 33 18.5C35.8 18.5 38 16.5 38 14H28Z" fill="#0F3B82"/>
+                <path d="M11 21.5V36C11 38.2 12.8 40 15 40H33C35.2 40 37 38.2 37 36V21.5" stroke="#0F3B82" stroke-width="2.8" stroke-linecap="round"/>
+                <rect x="16" y="31" width="3.5" height="5" rx="1" fill="#00B094"/>
+                <rect x="22.25" y="27" width="3.5" height="9" rx="1" fill="#2ECC71"/>
+                <rect x="28.5" y="23" width="3.5" height="13" rx="1" fill="#2ECC71"/>
+                <path d="M15 28.5L23.5 23.5L32.5 18.5M32.5 18.5H27.5M32.5 18.5V23.5" stroke="#2ECC71" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <div class="flex items-baseline leading-none font-display">
+              <span class="text-xl font-extrabold text-brand-navy">Mi</span>
+              <span class="text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-teal to-brand-green ml-1">negocio</span>
+            </div>
+            <span class="text-[11px] font-medium text-slate-500 mt-0.5">Tu negocio en buenas manos.</span>
+          </div>
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-600">
+          <a href="#problema" onclick="switchView('landing')" class="hover:text-brand-navy transition-colors">Problema</a>
+          <a href="#demo-ia" onclick="switchView('landing')" class="hover:text-brand-navy transition-colors">PMV en vivo</a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+          <button type="button" id="senior-toggle" onclick="toggleSeniorMode()" class="senior-toggle hidden sm:inline-flex items-center rounded-xl px-3 py-2 text-xs transition" aria-pressed="false">
+            Ver grande
+          </button>
+          <button onclick="switchView('checkout', 'trial')" class="btn-shimmer bg-gradient-to-r from-brand-teal to-brand-green hover:brightness-105 text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow-md shadow-brand-teal/20 transition-all">
+            Probar 14 días gratis
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="landing-view">
+
+    <!-- SECCIÓN 2: PROBLEMA Y SOLUCIÓN -->
+    <section id="problema" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="eyebrow text-brand-teal font-bold text-xs uppercase mb-3 block">El dolor diario en el mostrador</span>
+          <h2 class="section-title text-3xl sm:text-4xl font-extrabold text-brand-dark mb-4">¿Sigues sufriendo con el cuaderno de rayas y la memoria?</h2>
+          <p class="text-slate-600">Al final del día nadie se acuerda de los fiaos ni de cuántas sodas salieron.</p>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div class="problem-card bg-slate-50 rounded-3xl p-8 border border-slate-200">
+            <span class="inline-block bg-rose-100 text-rose-700 font-bold text-xs px-3 py-1 rounded-full mb-4">El método tradicional</span>
+            <h3 class="text-xl font-extrabold mb-3">Cuadernos tachados y cuentas de cabeza</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">Pierdes tiempo valioso sumando cuentas de noche con calculadora y te das cuenta de que falta mercadería cuando ya es tarde.</p>
+          </div>
+          <div class="solution-card bg-gradient-to-br from-brand-dark to-brand-navy rounded-3xl p-8 text-white">
+            <span class="inline-block bg-brand-green/20 text-brand-green font-bold text-xs px-3 py-1 rounded-full mb-4">La solución Mi Negocio</span>
+            <h3 class="text-xl font-extrabold mb-3">Tu asistente virtual en WhatsApp</h3>
+            <p class="text-sm text-blue-100 leading-relaxed">Mandas un audio rápido y el sistema procesa el movimiento, actualiza tu inventario y guarda el historial de forma persistente.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: PMV FUNCIONAL EN VIVO (PROCESAMIENTO + INVENTARIO + PERSISTENCIA) -->
+    <section id="demo-ia" class="py-20 bg-brand-surface border-y border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-10">
+          <span class="text-brand-teal font-bold text-xs uppercase tracking-widest mb-2 block">PMV para microempresas salvadoreñas</span>
+          <h2 class="text-3xl font-extrabold text-brand-dark mb-3">Administra tu catálogo, stock y margen de ganancia</h2>
+          <p class="text-slate-600 text-sm">Agrega muchos productos con nombre, unidad, precio de compra y precio de venta. Luego registra ventas o compras por voz o texto.</p>
+          <button type="button" onclick="toggleSeniorMode()" class="senior-toggle mt-5 inline-flex sm:hidden items-center justify-center rounded-xl px-5 py-3 text-sm" aria-pressed="false">
+            Activar letras grandes
+          </button>
+        </div>
+
+        <details class="demo-panel mb-8 bg-white rounded-3xl border border-slate-200 overflow-hidden">
+          <summary class="cursor-pointer px-6 py-5 flex items-center justify-between gap-4 font-bold text-brand-dark">
+            <span>Administrar catálogo de productos</span>
+            <span class="text-xs font-semibold text-brand-teal">Agregar / importar</span>
+          </summary>
+          <div class="px-6 pb-6 border-t border-slate-100">
+            <div class="mt-5 rounded-2xl border border-brand-teal/30 bg-gradient-to-br from-teal-50 to-white p-5">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <p class="text-xs font-bold uppercase tracking-wider text-brand-teal">Forma más rápida</p>
+                  <h3 class="mt-1 text-lg font-extrabold text-brand-dark">Agrega tu catálogo hablando</h3>
+                  <p class="mt-1 text-xs text-slate-500">Ejemplo: "Leche, unidad cajas, compra 90 centavos, venta dos cincuenta, stock 30". "Dos cincuenta" se entiende como $2.50.</p>
+                </div>
+                <button type="button" onclick="startCatalogVoice()" class="shrink-0 rounded-2xl bg-brand-navy px-7 py-5 text-lg font-extrabold text-white shadow-lg">
+                  🎙️ Pulsar y hablar
+                </button>
+              </div>
+              <div class="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-2 text-sm">
+                <div class="rounded-xl border border-slate-200 bg-white px-3 py-3"><strong class="text-brand-navy">1.</strong> Diga el producto</div>
+                <div class="rounded-xl border border-slate-200 bg-white px-3 py-3"><strong class="text-brand-navy">2.</strong> Diga cuánto compra y vende</div>
+                <div class="rounded-xl border border-slate-200 bg-white px-3 py-3"><strong class="text-brand-navy">3.</strong> Revise y confirme</div>
+              </div>
+              <div class="mt-4 flex flex-col sm:flex-row gap-2">
+                <input id="catalog-voice-text" class="min-w-0 flex-1 rounded-xl border border-slate-200 bg-white px-3.5 py-3 text-sm" placeholder="El audio convertido aparecerá aquí...">
+                <button type="button" onclick="previewCatalogVoice()" class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-xs font-bold text-brand-navy">Revisar</button>
+              </div>
+              <p id="catalog-voice-status" class="mt-2 min-h-[18px] text-xs text-slate-500"></p>
+              <div id="catalog-preview" class="mt-3 hidden rounded-xl border border-slate-200 bg-white p-3"></div>
+            </div>
+            <form id="catalog-form" onsubmit="addCatalogItem(event)" class="senior-advanced grid grid-cols-2 lg:grid-cols-6 gap-3 pt-5">
+              <div class="col-span-2">
+                <label class="block text-[11px] font-bold text-slate-600 mb-1">Producto</label>
+                <input id="catalog-name" required class="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm" placeholder="Ej. Coca-Cola 1.5 L">
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-600 mb-1">Unidad</label>
+                <input id="catalog-unit" required class="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm" placeholder="botellas">
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-600 mb-1">Compra $</label>
+                <input id="catalog-buy" required min="0" step="0.01" type="number" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm" placeholder="0.60">
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-600 mb-1">Venta $</label>
+                <input id="catalog-sale" required min="0" step="0.01" type="number" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm" placeholder="0.90">
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-600 mb-1">Stock inicial</label>
+                <input id="catalog-stock" required min="0" step="1" type="number" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm" placeholder="12">
+              </div>
+              <button type="submit" class="col-span-2 lg:col-span-6 justify-self-end bg-brand-navy text-white font-bold text-xs px-5 py-2.5 rounded-xl hover:bg-brand-dark transition">Agregar al catálogo</button>
+            </form>
+
+            <div class="mt-5 grid grid-cols-1 lg:grid-cols-2 gap-4">
+              <div class="senior-advanced bg-slate-50 border border-slate-200 rounded-2xl p-4">
+                <label class="block text-xs font-bold text-slate-700 mb-2">Importar catálogo desde CSV</label>
+                <p class="text-[11px] text-slate-500 mb-2">Formato: producto,unidad,precio_compra,precio_venta,stock</p>
+                <textarea id="catalog-csv" rows="3" class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-mono" placeholder="Coca-Cola 1.5 L,botellas,0.75,1.25,24&#10;Pan francés,unidades,0.12,0.25,100"></textarea>
+                <button type="button" onclick="importCatalogCsv()" class="mt-2 text-xs font-bold text-brand-navy border border-slate-200 bg-white px-4 py-2 rounded-lg">Importar CSV</button>
+              </div>
+              <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4">
+                <div class="flex items-center justify-between mb-2">
+                  <p class="text-xs font-bold text-slate-700">Productos registrados</p>
+                  <span id="catalog-count" class="text-[11px] text-slate-500">0 productos</span>
+                </div>
+                <div id="catalog-manager" class="max-h-40 overflow-y-auto space-y-2"></div>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <!-- Controles y Chat -->
+          <div class="demo-panel lg:col-span-6 bg-white rounded-3xl p-6 border border-slate-200 space-y-5">
+            <div class="flex flex-wrap gap-2">
+              <button type="button" onclick="processCommand('Vendí 3 bolsas de arroz y 2 botellas de aceite')" class="quick-action bg-slate-50 border border-slate-200 font-bold text-xs px-3.5 py-2.5 rounded-xl text-brand-navy">
+                1. Venta: 3 arroz, 2 aceite
+              </button>
+              <button type="button" onclick="processCommand('Entraron 20 libras de frijol rojo y 15 sodas')" class="quick-action bg-slate-50 border border-slate-200 font-bold text-xs px-3.5 py-2.5 rounded-xl text-brand-navy">
+                2. Compra: +20 frijol, +15 sodas
+              </button>
+              <button type="button" onclick="processCommand('¿Cuánto llevo ganado esta semana?')" class="quick-action bg-slate-50 border border-slate-200 font-bold text-xs px-3.5 py-2.5 rounded-xl text-brand-navy">
+                3. Consultar balance
+              </button>
+            </div>
+
+            <form onsubmit="handleCustomCommand(event)" class="flex gap-2">
+              <input type="text" id="cmd-input" required class="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm" placeholder="Ej. Vendí 1 frijol y 2 sodas...">
+              <button type="button" id="mic-btn" onclick="startVoiceInput()" title="Dictar por voz" class="px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-xs font-bold text-brand-navy">
+                Micrófono
+              </button>
+              <button type="submit" class="bg-brand-navy hover:bg-brand-dark text-white font-bold text-xs px-4 py-2.5 rounded-xl">
+                Enviar
+              </button>
+            </form>
+            <p id="voice-status" class="text-[11px] text-slate-500 min-h-[16px]"></p>
+
+            <div id="chat-log" class="wa-wallpaper rounded-2xl p-4 space-y-3 max-h-[280px] overflow-y-auto border border-slate-200 text-xs"></div>
+          </div>
+
+          <!-- Estado Persistente de Inventario, Balance y Registros -->
+          <div class="demo-panel lg:col-span-6 bg-white rounded-3xl p-6 border border-slate-200 space-y-5">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-4">
+              <div>
+                <p class="text-xs text-slate-500">Ganancia neta acumulada</p>
+                <p id="kpi-profit" class="text-3xl font-extrabold text-brand-dark font-display">$542.50</p>
+              </div>
+              <div class="text-right">
+                <p class="text-xs text-slate-500">Latencia último proceso</p>
+                <p id="kpi-latency" class="text-sm font-bold text-brand-teal">0 ms</p>
+                <p id="kpi-count" class="text-[11px] text-slate-400">0 movimientos guardados</p>
+              </div>
+            </div>
+
+            <div>
+              <p class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">Inventario actual (persistido)</p>
+              <div id="inventory-list" class="space-y-3"></div>
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <p class="text-xs font-bold uppercase tracking-wider text-slate-500">Últimos registros guardados</p>
+                <div class="flex gap-3 text-xs">
+                  <button type="button" onclick="exportRecords()" class="text-brand-navy font-semibold hover:underline">Descargar JSON</button>
+                  <button type="button" onclick="resetDemoData()" class="text-rose-600 font-semibold hover:underline">Restablecer demo</button>
+                </div>
+              </div>
+              <div id="tx-history" class="bg-slate-50 rounded-2xl p-3 border border-slate-200 max-h-[150px] overflow-y-auto space-y-2 text-xs"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 8: GARANTÍA Y CTA FINAL -->
+    <section class="py-20 bg-brand-dark text-white text-center">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        <span class="bg-brand-green/20 text-brand-green font-bold text-xs px-4 py-1.5 rounded-full inline-block">Garantía de satisfacción de 30 días</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold">Prueba gratis por 14 días, sin tarjeta de crédito.</h2>
+        <button onclick="switchView('checkout', 'trial')" class="btn-shimmer bg-brand-green hover:bg-brand-greenHover text-brand-dark font-extrabold px-8 py-4 rounded-2xl shadow-lg transition-all">
+          Empezar prueba gratis ahora →
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- VISTA 2: CHECKOUT FUNCIONAL -->
+  <section id="checkout-view" class="hidden min-h-screen bg-slate-100 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto">
+      <button onclick="switchView('landing')" class="text-sm font-semibold text-slate-600 hover:text-brand-navy mb-6 block">← Volver al inicio</button>
+
+      <div id="co-form-card" class="bg-white rounded-3xl p-8 shadow-saas border border-slate-200 space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <h2 class="text-2xl font-extrabold text-brand-dark">Activa tu cuenta</h2>
+            <p class="text-xs text-slate-500">Mi Negocio — Plan Emprendedor El Salvador</p>
+          </div>
+          <div class="flex rounded-xl border border-slate-200 overflow-hidden text-xs font-bold">
+            <button type="button" id="mode-trial" onclick="setBillingMode('trial')" class="px-4 py-2.5 bg-brand-navy text-white">Prueba 14 días ($0)</button>
+            <button type="button" id="mode-direct" onclick="setBillingMode('direct')" class="px-4 py-2.5 bg-white text-slate-600">Pagar hoy ($13.56)</button>
+          </div>
+        </div>
+
+        <form onsubmit="submitSubscription(event)" class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Tu nombre completo</label>
+            <input type="text" id="input-name" required oninput="updateCardName(this)" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-sm" placeholder="Ej. Blanca Leticia Argueta">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">WhatsApp del negocio (+503)</label>
+            <input type="text" id="input-wa" required maxlength="9" oninput="fmtPhone(this)" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-sm" placeholder="7890-1234">
+          </div>
+
+          <div id="trial-notice" class="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 text-xs text-emerald-900">
+            <strong>Prueba gratuita de 14 días:</strong> No se solicita tarjeta ni cobro alguno hoy. Tu cuenta se guarda al instante.
+          </div>
+
+          <div id="paid-fields" class="hidden space-y-4">
+            <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 text-xs text-amber-900">
+              <strong>Pago no conectado:</strong> esta demostración no solicita ni procesa datos bancarios. La integración real de pagos requiere activar un proveedor aprobado.
+            </div>
+          </div>
+
+          <button type="submit" id="co-submit-btn" class="w-full btn-shimmer bg-brand-green hover:bg-brand-greenHover text-brand-dark font-extrabold py-4 rounded-xl shadow transition-all">
+            Activar mis 14 días gratis
+          </button>
+        </form>
+      </div>
+
+      <div id="co-success-card" class="hidden bg-white rounded-3xl p-8 shadow-saas border border-slate-200 space-y-4">
+        <h2 class="text-2xl font-extrabold text-brand-dark">Cuenta guardada en el PMV</h2>
+        <p id="co-summary-text" class="text-sm text-slate-600"></p>
+        <div class="flex gap-3 pt-2">
+          <button type="button" onclick="switchView('landing')" class="bg-brand-navy text-white font-bold text-xs px-5 py-3 rounded-xl">Ir al panel y probar registros</button>
+          <button type="button" onclick="resetCheckoutView()" class="border border-slate-200 font-bold text-xs px-5 py-3 rounded-xl text-slate-600">Nuevo registro</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-white py-12 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-xs text-slate-400">
+      <span>© 2026 Mi Negocio S.A.S. de C.V. · El Salvador</span>
+      <span>Facultad de Ciencia y Tecnología · Universidad Gerardo Barrios (UGB)</span>
+    </div>
+  </footer>
+
+  <script>
+    const STORAGE_KEY = 'mi_negocio_pmv_state_v1';
+
+    function defaultState() {
+      return {
+        profit: 542.50,
+        lastLatencyMs: 0,
+        catalog: {
+          arroz:  { name: 'Arroz blanco', unit: 'bolsas', buyPrice: 0.82, salePrice: 1.25, stock: 6, max: 24 },
+          aceite: { name: 'Aceite', unit: 'botellas', buyPrice: 1.55, salePrice: 2.25, stock: 2, max: 16 },
+          frijol: { name: 'Frijol rojo', unit: 'libras', buyPrice: 0.72, salePrice: 1.10, stock: 12, max: 40 },
+          sodas:  { name: 'Sodas en lata', unit: 'unidades', buyPrice: 0.55, salePrice: 0.85, stock: 7, max: 30 }
+        },
+        stock: { arroz: 6, aceite: 2, frijol: 12, sodas: 7 },
+        subscriptions: [],
+        transactions: [
+          { id: 1, type: 'resumen', title: 'Estado inicial del negocio', detail: 'Ganancia base $542.50 cargada', time: 'Inicio' }
+        ],
+        messages: [
+          { from: 'bot', text: 'Listo chele. Escribe o dicta una venta o ingreso de mercadería para guardar en el PMV.' }
+        ]
+      };
+    }
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return defaultState();
+        const parsed = JSON.parse(raw);
+        const defaults = defaultState();
+        const catalog = parsed.catalog && Object.keys(parsed.catalog).length
+          ? parsed.catalog
+          : defaults.catalog;
+        Object.keys(catalog).forEach(key => {
+          if (typeof catalog[key].stock !== 'number' && parsed.stock && typeof parsed.stock[key] === 'number') {
+            catalog[key].stock = parsed.stock[key];
+          }
+        });
+        return { ...defaults, ...parsed, catalog, stock: parsed.stock || {} };
+      } catch (e) {
+        return defaultState();
+      }
+    }
+
+    let state = loadState();
+
+    fetch('/api/state')
+      .then(response => response.ok ? response.json() : null)
+      .then(serverState => {
+        if (!serverState) return;
+        state = serverState;
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        } catch (error) {
+          console.warn('No se pudo sincronizar el estado local:', error);
+        }
+        renderDashboard();
+      })
+      .catch(() => {});
+
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      } catch (e) {
+        console.warn('No se pudo guardar en localStorage:', e);
+      }
+      fetch('/api/state', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(state)
+      }).catch(() => {});
+    }
+
+    function switchView(view, mode) {
+      document.getElementById('landing-view').classList.toggle('hidden', view === 'checkout');
+      document.getElementById('checkout-view').classList.toggle('hidden', view !== 'checkout');
+      if (view === 'checkout' && mode) {
+        setBillingMode(mode);
+      }
+      window.scrollTo(0, 0);
+    }
+
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>"']/g, char => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
+      })[char]);
+    }
+
+    function makeCatalogKey(name) {
+      return name.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || `producto-${Date.now()}`;
+    }
+
+    function addCatalogItem(e) {
+      e.preventDefault();
+      const name = document.getElementById('catalog-name').value.trim();
+      const unit = document.getElementById('catalog-unit').value.trim();
+      const buyPrice = parseFloat(document.getElementById('catalog-buy').value);
+      const salePrice = parseFloat(document.getElementById('catalog-sale').value);
+      const stock = parseInt(document.getElementById('catalog-stock').value, 10);
+      if (!name || !unit || !Number.isFinite(buyPrice) || !Number.isFinite(salePrice) || !Number.isFinite(stock)) return;
+
+      let key = makeCatalogKey(name);
+      while (state.catalog[key] && state.catalog[key].name.toLowerCase() !== name.toLowerCase()) key += '-2';
+      state.catalog[key] = { name, unit, buyPrice, salePrice, stock, max: Math.max(stock, 10) };
+      saveState();
+      document.getElementById('catalog-form').reset();
+      renderDashboard();
+    }
+
+    function importCatalogCsv() {
+      const lines = document.getElementById('catalog-csv').value.split(/\r?\n/).map(line => line.trim()).filter(Boolean);
+      let imported = 0;
+      lines.forEach(line => {
+        const parts = line.split(',').map(value => value.trim());
+        if (parts.length < 5) return;
+        const [name, unit, buy, sale, stock] = parts;
+        const buyPrice = parseFloat(buy);
+        const salePrice = parseFloat(sale);
+        const initialStock = parseInt(stock, 10);
+        if (!name || !unit || !Number.isFinite(buyPrice) || !Number.isFinite(salePrice) || !Number.isFinite(initialStock)) return;
+        let key = makeCatalogKey(name);
+        while (state.catalog[key] && state.catalog[key].name.toLowerCase() !== name.toLowerCase()) key += '-2';
+        state.catalog[key] = { name, unit, buyPrice, salePrice, stock: initialStock, max: Math.max(initialStock, 10) };
+        imported++;
+      });
+      saveState();
+      document.getElementById('catalog-csv').value = '';
+      renderDashboard();
+      if (imported) {
+        const status = document.getElementById('voice-status');
+        status.textContent = `Se importaron ${imported} productos al catálogo.`;
+      }
+    }
+
+    function removeCatalogItem(key) {
+      if (!state.catalog[key]) return;
+      delete state.catalog[key];
+      saveState();
+      renderDashboard();
+    }
+
+    function startCatalogVoice() {
+      const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const status = document.getElementById('catalog-voice-status');
+      if (!SpeechRec) {
+        status.textContent = 'Tu navegador no permite dictado. Escribe la frase y usa Revisar.';
+        return;
+      }
+
+      const recognition = new SpeechRec();
+      recognition.lang = 'es-SV';
+      recognition.interimResults = false;
+      status.textContent = 'Escuchando... di producto, unidad, precio de compra, precio de venta y stock.';
+      recognition.onresult = event => {
+        const transcript = event.results[0][0].transcript;
+        document.getElementById('catalog-voice-text').value = transcript;
+        status.textContent = `Escuchado: "${transcript}"`;
+        previewCatalogVoice();
+      };
+      recognition.onerror = () => {
+        status.textContent = 'No se captó el audio. Inténtalo de nuevo o escribe la frase.';
+      };
+      recognition.start();
+    }
+
+    function parseCatalogMoney(text, label) {
+      const segmentMatch = text.match(new RegExp(`(?:${label})\\s*(?:a\\s*)?([^,.]*?)(?=,|\\b(?:venta|precio de venta|stock|cantidad)\\b|$)`, 'i'));
+      if (segmentMatch) {
+        const segment = segmentMatch[1].trim();
+        const normalizedSegment = segment.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        const numericDollarCents = normalizedSegment.match(/\b(\d{3,})\s+de\s*(?:dolar(?:es)?|usd)\b/);
+        if (numericDollarCents) return Number(numericDollarCents[1]) / 100;
+
+        const spokenPrice = parseSalvadoranPrice(normalizedSegment);
+        if (spokenPrice !== null) return spokenPrice;
+
+        const shorthandDigits = normalizedSegment.match(/^\s*(\d{3})\s*$/);
+        if (shorthandDigits) return Number(shorthandDigits[1]) / 100;
+
+        const spelledDollarCents = normalizedSegment.match(/\b(uno|un|una|dos|tres|cuatro|cinco|seis|siete|ocho|nueve)\s+(veinte|treinta|cuarenta|cincuenta|sesenta|setenta|ochenta|noventa|diez|once|doce|trece|catorce|quince)\s*(?:de\s*)?(?:dolar(?:es)?|usd)\b/);
+        if (spelledDollarCents) {
+          const whole = parseSpelledNumber(spelledDollarCents[1]);
+          const cents = parseSpelledNumber(spelledDollarCents[2]);
+          if (whole !== null && cents !== null) return whole + cents / 100;
+        }
+      }
+
+      const patterns = [
+        new RegExp(`(?:${label})\\s*(?::|=|a)?\\s*\\$?\\s*(\\d+(?:[.,]\\d{1,2})?)\\s*(centavos|centimos|centimo|cents?)\\b`, 'i'),
+        new RegExp(`(?:${label})\\s*(?::|=|a)?\\s*\\$?\\s*(\\d+(?:[.,]\\d{1,2})?)\\s*(d[oó]lar(?:es)?|usd|pesos?)\\b`, 'i'),
+        new RegExp(`(?:${label})\\s*(?::|=|a)?\\s*\\$?\\s*(\\d+(?:[.,]\\d{1,2})?)`, 'i')
+      ];
+      for (const pattern of patterns) {
+        const match = text.match(pattern);
+        if (!match) continue;
+        if (match[2] && /^cent/i.test(match[2])) return parseFloat(match[1].replace(',', '.')) / 100;
+        return parseFloat(match[1].replace(',', '.'));
+      }
+
+      if (segmentMatch) {
+        const spelled = parseSpelledNumber(segmentMatch[1]);
+        if (spelled !== null) {
+          const isCents = /\bcentavos?|cents?\b/i.test(segmentMatch[1]);
+          return isCents ? spelled / 100 : spelled;
+        }
+      }
+      return null;
+    }
+
+    function parseSalvadoranPrice(segment) {
+      const numberWords = 'uno|un|una|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez|once|doce|trece|catorce|quince|veinte|veintiuno|veintidos|veintitres|veinticuatro|veinticinco|veintiseis|veintisiete|veintiocho|veintinueve|treinta|cuarenta|cincuenta|sesenta|setenta|ochenta|noventa';
+      const match = segment.match(new RegExp(`^\\s*(\\d{1,2}|${numberWords})\\s+(?:con\\s+)?(\\d{1,2}|(?:${numberWords})(?:\\s+y\\s+(?:uno|dos|tres|cuatro|cinco|seis|siete|ocho|nueve))?)(?:\\s*(?:de\\s*)?(?:dolar(?:es)?|usd))?\\s*$`, 'i'));
+      if (!match) return null;
+
+      const whole = /^\d+$/.test(match[1]) ? Number(match[1]) : parseSpelledNumber(match[1]);
+      const cents = /^\d+$/.test(match[2]) ? Number(match[2]) : parseSpelledNumber(match[2]);
+      if (whole === null || cents === null || cents > 99) return null;
+      return whole + cents / 100;
+    }
+
+    function parseSpelledNumber(text) {
+      const units = { cero: 0, uno: 1, dos: 2, tres: 3, cuatro: 4, cinco: 5, seis: 6, siete: 7, ocho: 8, nueve: 9, diez: 10, once: 11, doce: 12, trece: 13, catorce: 14, quince: 15, veinte: 20, veintiuno: 21, veintidos: 22, veintitres: 23, veinticuatro: 24, veinticinco: 25, veintiseis: 26, veintisiete: 27, veintiocho: 28, veintinueve: 29, treinta: 30, cuarenta: 40, cincuenta: 50, sesenta: 60, setenta: 70, ochenta: 80, noventa: 90, cien: 100, ciento: 100 };
+      const normalized = text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z ]+/g, ' ').replace(/\s+/g, ' ').trim();
+      if (!normalized) return null;
+      const words = normalized.split(' ');
+      let total = 0;
+      let found = false;
+      words.forEach((word, index) => {
+        if (word === 'y') return;
+        if (units[word] !== undefined) {
+          total += units[word];
+          found = true;
+        } else if (word === 'mil') {
+          total = total === 0 ? 1000 : total * 1000;
+          found = true;
+        }
+      });
+      return found ? total : null;
+    }
+
+    function parseCatalogVoice(text) {
+      const lower = text.toLowerCase()
+        .replace(/\bd[oó]lares?\b/g, 'dolar')
+        .replace(/\bcentavos\b/g, 'centavos');
+
+      const unitMatch = lower.match(/(?:unidad(?:es)?\s+)?(?:de\s+)?(?:en\s+)?(bolsas?|botellas?|libras?|unidades?|paquetes?|cajas?|sacos?|latas?|kilos?|gramos?|galones?|onzas?)/i);
+      const stockMatch = lower.match(/(?:stock|cantidad|existencia|tengo|hay)\s*(?:de\s*)?[:=]?\s*(\d+)/i);
+      const buyMatch = lower.match(/(?:compra|compr[eé]|cuesta comprar|precio de compra)\s*(?::|=|a)?\s*\$?\s*(\d+(?:[.,]\d{1,2})?)\s*(centavos|centimos|centimo|cents?)?/i);
+      const saleMatch = lower.match(/(?:venta|vend[eé]?|precio de venta)\s*(?::|=|a)?\s*\$?\s*(\d+(?:[.,]\d{1,2})?)\s*(centavos|centimos|centimo|cents?)?/i);
+
+      let name = text.trim();
+      const nameCutMatch = name.match(/^(.*?)\s*,?\s*(?:unidad|compra|precio de compra|stock|cantidad)/i);
+      if (nameCutMatch) name = nameCutMatch[1].trim();
+      name = name.replace(/^(?:el|la|los|las)\s+/i, '').replace(/[,.]+$/g, '').trim();
+
+      let buyPrice = parseCatalogMoney(text, '(?:compra|compr[eé]|precio de compra)');
+      let salePrice = parseCatalogMoney(text, '(?:venta|vend[eé]|precio de venta)');
+      if (buyPrice === null && buyMatch) buyPrice = parseFloat(buyMatch[1].replace(',', '.'));
+      if (salePrice === null && saleMatch) salePrice = parseFloat(saleMatch[1].replace(',', '.'));
+      const buySegment = lower.match(/(?:compra|precio de compra)[^,]*(?=,|$)/i)?.[0] || '';
+      const saleSegment = lower.match(/(?:venta|precio de venta)[^,]*(?=,|$)/i)?.[0] || '';
+      if (/centav|centim|cents/i.test(buySegment) || (buyMatch && /^centav|^centim|^cents/i.test(buyMatch[2] || ''))) {
+        buyPrice = (buyMatch ? parseFloat(buyMatch[1].replace(',', '.')) : buyPrice) / 100;
+      }
+      if (/centav|centim|cents/i.test(saleSegment) || (saleMatch && /^centav|^centim|^cents/i.test(saleMatch[2] || ''))) {
+        salePrice = (saleMatch ? parseFloat(saleMatch[1].replace(',', '.')) : salePrice) / 100;
+      }
+
+      const unitsMap = {uno:1, dos:2, tres:3, cuatro:4, cinco:5, seis:6, siete:7, ocho:8, nueve:9};
+      const tensMap = {diez:10, once:11, doce:12, trece:13, catorce:14, quince:15, veinte:20, treinta:30, cuarenta:40, cincuenta:50, sesenta:60, setenta:70, ochenta:80, noventa:90};
+      const buyWordsMatch = lower.match(/(?:compra|precio de compra)[^,]*\b(veinte|treinta|cuarenta|cincuenta|sesenta|setenta|ochenta|noventa)\s*(?:y\s*)?(uno|dos|tres|cuatro|cinco|seis|siete|ocho|nueve)?\s*centavos/i);
+      const saleWordsMatch = lower.match(/(?:venta|precio de venta)[^,]*\b(veinte|treinta|cuarenta|cincuenta|sesenta|setenta|ochenta|noventa)\s*(?:y\s*)?(uno|dos|tres|cuatro|cinco|seis|siete|ocho|nueve)?\s*centavos/i);
+      if (buyWordsMatch) {
+        buyPrice = (tensMap[buyWordsMatch[1]] + (buyWordsMatch[2] ? unitsMap[buyWordsMatch[2]] : 0)) / 100;
+      }
+      if (saleWordsMatch) {
+        salePrice = (tensMap[saleWordsMatch[1]] + (saleWordsMatch[2] ? unitsMap[saleWordsMatch[2]] : 0)) / 100;
+      }
+      buyPrice ??= parseCatalogMoney(text, 'compra');
+      salePrice ??= parseCatalogMoney(text, '(?:venta|precio de venta)');
+
+      const stock = stockMatch ? parseInt(stockMatch[1], 10) : null;
+      return {
+        name: name || '',
+        unit: unitMatch ? unitMatch[1] : 'unidades',
+        buyPrice,
+        salePrice,
+        stock
+      };
+    }
+
+    function previewCatalogVoice() {
+      const transcript = document.getElementById('catalog-voice-text').value.trim();
+      const preview = document.getElementById('catalog-preview');
+      if (!transcript) {
+        document.getElementById('catalog-voice-status').textContent = 'Graba o escribe una frase antes de revisar.';
+        preview.classList.add('hidden');
+        return;
+      }
+
+      const item = parseCatalogVoice(transcript);
+      const complete = item.name && Number.isFinite(item.buyPrice) && Number.isFinite(item.salePrice) && Number.isFinite(item.stock) && item.stock >= 0;
+      preview.classList.remove('hidden');
+      preview.innerHTML = complete
+        ? `<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <p class="font-bold text-sm text-brand-dark">${escapeHtml(item.name)}</p>
+              <p class="text-xs text-slate-500">${item.stock} ${escapeHtml(item.unit)} · Compra $${item.buyPrice.toFixed(2)} · Venta $${item.salePrice.toFixed(2)}</p>
+            </div>
+            <button type="button" onclick="saveCatalogFromVoice()" class="rounded-xl bg-brand-green px-4 py-2.5 text-xs font-bold text-brand-dark">Confirmar y guardar</button>
+          </div>`
+        : `<p class="text-xs text-rose-600">Falta algún dato. Usa: “Producto, unidad bolsas, compra 0.82, venta 1.25, stock 24”.</p>`;
+      window.pendingCatalogItem = complete ? item : null;
+    }
+
+    function saveCatalogFromVoice() {
+      if (!window.pendingCatalogItem) return;
+      const item = window.pendingCatalogItem;
+      let key = makeCatalogKey(item.name);
+      while (state.catalog[key] && state.catalog[key].name.toLowerCase() !== item.name.toLowerCase()) key += '-2';
+      state.catalog[key] = { ...item, max: Math.max(item.stock, 10) };
+      saveState();
+      document.getElementById('catalog-voice-text').value = '';
+      document.getElementById('catalog-preview').classList.add('hidden');
+      document.getElementById('catalog-voice-status').textContent = `${item.name} quedó guardado en el catálogo.`;
+      window.pendingCatalogItem = null;
+      renderDashboard();
+    }
+
+    function parseItems(text) {
+      const lower = text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[.,]/g, ' ');
+      const found = [];
+      const catalogEntries = Object.entries(state.catalog).sort((a, b) =>
+        b[1].name.length - a[1].name.length
+      );
+
+      catalogEntries.forEach(([key, item]) => {
+        const normalizedName = item.name.toLowerCase()
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .replace(/[.,]/g, ' ')
+          .replace(/\s+/g, ' ')
+          .trim();
+
+        if (!normalizedName) return;
+
+        const aliases = [normalizedName, normalizedName.split(' ')[0], key];
+        let qty = 0;
+        let matched = false;
+
+        aliases.forEach(alias => {
+          if (matched || !alias) return;
+          const escapedName = alias.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+          const exactMatch = lower.match(new RegExp(`(^|\\b)${escapedName}(es|s)?(\\b|$)`, 'i'));
+          if (!exactMatch) return;
+          matched = true;
+          const before = lower.match(new RegExp(`(\\d+)\\s*(?:[a-záéíóúñ]+\\s+){0,3}${escapedName}(?:es|s)?`, 'i'));
+          const after = lower.match(new RegExp(`${escapedName}(?:es|s)?\\s*(?:de\\s+)?(\\d+)`, 'i'));
+          qty = before ? parseInt(before[1], 10) : after ? parseInt(after[1], 10) : 1;
+        });
+
+        if (qty > 0 && !found.some(entry => entry.key === key)) found.push({ key, qty });
+      });
+
+      return found;
+    }
+
+    async function processCommand(rawText) {
+      const text = rawText.trim();
+      if (!text) return;
+
+      try {
+        const response = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text })
+        });
+        if (response.ok) {
+          const result = await response.json();
+          state = result.state;
+          saveState();
+          renderDashboard();
+          return;
+        }
+      } catch (error) {
+        console.warn('No se pudo usar el motor compartido; se usa el modo local.', error);
+      }
+
+      const t0 = performance.now();
+      if (!text) return;
+
+      const lower = text.toLowerCase();
+      const isRestock = /\b(entraron|compr[eé]|trajeron|llegaron|ingres[oó]|sumar)\b/.test(lower);
+      const isQuery = /\b(cu[aá]nto|ganado|balance|semana|resumen)\b/.test(lower);
+      const items = parseItems(text);
+
+      let reply = '';
+      let txType = 'consulta';
+      let txTitle = text;
+      let txDetail = '';
+
+      if (isQuery && items.length === 0) {
+        reply = `Tu ganancia acumulada actual es de <strong>$${state.profit.toFixed(2)}</strong> y tienes ${state.transactions.length} movimientos guardados.`;
+        txType = 'consulta';
+        txDetail = `Balance consultado: $${state.profit.toFixed(2)}`;
+      } else if (items.length > 0) {
+        if (isRestock) {
+          const parts = [];
+          let cost = 0;
+          items.forEach(({ key, qty }) => {
+            const item = state.catalog[key];
+            item.stock = (item.stock || 0) + qty;
+            const itemCost = +(qty * item.buyPrice).toFixed(2);
+            cost += itemCost;
+            parts.push(`+${qty} ${item.name.toLowerCase()}`);
+          });
+          state.profit = Math.max(0, +(state.profit - cost).toFixed(2));
+          reply = `Mercadería sumada: <strong>${parts.join(', ')}</strong> (costo de compra -$${cost.toFixed(2)}). Inventario guardado.`;
+          txType = 'compra';
+          txTitle = `Ingreso: ${parts.join(', ')}`;
+          txDetail = `Costo mercadería: -$${cost.toFixed(2)}`;
+        } else {
+          const parts = [];
+          let total = 0;
+          let grossProfit = 0;
+          items.forEach(({ key, qty }) => {
+            const item = state.catalog[key];
+            const actualQty = Math.min(qty, item.stock || 0);
+            item.stock = Math.max(0, (item.stock || 0) - qty);
+            const subtotal = +(actualQty * item.salePrice).toFixed(2);
+            grossProfit += +(actualQty * (item.salePrice - item.buyPrice)).toFixed(2);
+            total += subtotal;
+            parts.push(`${actualQty}x ${item.name} ($${subtotal.toFixed(2)})`);
+          });
+          state.profit = +(state.profit + grossProfit).toFixed(2);
+          const lowItems = Object.entries(state.catalog)
+            .filter(([, item]) => item.stock <= 3)
+            .map(([, item]) => `${item.name} (${item.stock})`);
+          const warn = lowItems.length ? ` Ojo con stock bajo: ${lowItems.join(', ')}.` : '';
+          reply = `¡Anotado chele! ${parts.join(' y ')}. Total: <strong>$${total.toFixed(2)}</strong>.${warn}`;
+          txType = 'venta';
+          txTitle = `Venta: ${parts.join(', ')}`;
+          txDetail = `Ingreso: +$${total.toFixed(2)}`;
+        }
+      } else {
+        reply = 'Entendí el mensaje pero no detecté producto con cantidad. Prueba con: <em>"Vendí 2 arroces y 1 aceite"</em> o <em>"Entraron 10 frijoles"</em>.';
+        txType = 'nota';
+        txDetail = 'Mensaje registrado sin cambio de stock';
+      }
+
+      const elapsed = Math.max(1, Math.round(performance.now() - t0));
+      state.lastLatencyMs = elapsed;
+      state.messages.push({ from: 'me', text });
+      state.messages.push({ from: 'bot', text: reply });
+      if (state.messages.length > 14) state.messages = state.messages.slice(-14);
+
+      state.transactions.unshift({
+        id: Date.now(),
+        type: txType,
+        title: txTitle,
+        detail: txDetail,
+        time: new Date().toLocaleTimeString('es-SV', { hour: '2-digit', minute: '2-digit' })
+      });
+      if (state.transactions.length > 30) state.transactions = state.transactions.slice(0, 30);
+
+      saveState();
+      renderDashboard();
+    }
+
+    function handleCustomCommand(e) {
+      e.preventDefault();
+      const input = document.getElementById('cmd-input');
+      const val = input.value.trim();
+      if (!val) return;
+      processCommand(val);
+      input.value = '';
+    }
+
+    function startVoiceInput() {
+      const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const statusEl = document.getElementById('voice-status');
+      if (!SpeechRec) {
+        statusEl.textContent = 'Tu navegador no soporta dictado por voz; escribe el comando o usa los botones.';
+        return;
+      }
+      const rec = new SpeechRec();
+      rec.lang = 'es-SV';
+      rec.interimResults = false;
+      statusEl.textContent = 'Escuchando... habla claro sobre tu venta o mercadería.';
+      rec.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        statusEl.textContent = `Escuchado: "${transcript}"`;
+        processCommand(transcript);
+      };
+      rec.onerror = () => {
+        statusEl.textContent = 'No se capturó audio. Intenta de nuevo o escribe el texto.';
+      };
+      rec.start();
+    }
+
+    function renderDashboard() {
+      document.getElementById('kpi-profit').textContent = `$${state.profit.toFixed(2)}`;
+      document.getElementById('kpi-latency').textContent = `${state.lastLatencyMs} ms`;
+      document.getElementById('kpi-count').textContent = `${state.transactions.length} movimientos guardados`;
+
+      const chatEl = document.getElementById('chat-log');
+      chatEl.innerHTML = state.messages.map(m => m.from === 'me'
+        ? `<div class="chat-bubble-me ml-auto max-w-[85%] bg-[#DCF8C6] p-2.5 shadow-sm text-slate-800 italic">"${m.text}"</div>`
+        : `<div class="chat-bubble-bot mr-auto max-w-[90%] bg-white p-2.5 shadow-sm border border-slate-100 text-slate-700">${m.text}</div>`
+      ).join('');
+      chatEl.scrollTop = chatEl.scrollHeight;
+
+      const stockEl = document.getElementById('inventory-list');
+      stockEl.innerHTML = Object.entries(state.catalog).map(([key, item]) => {
+        const qty = item.stock || 0;
+        const pct = Math.min(100, Math.round((qty / (item.max || 10)) * 100));
+        const barColor = qty <= 3 ? 'bg-rose-500' : qty <= 7 ? 'bg-amber-400' : 'bg-brand-teal';
+        const margin = +(item.salePrice - item.buyPrice).toFixed(2);
+        return `
+          <div class="border-b border-slate-100 pb-3 last:border-none last:pb-0">
+            <div class="flex justify-between gap-3 text-xs mb-1">
+              <div>
+                <span class="font-semibold text-slate-700">${item.name}</span>
+                <span class="block text-[10px] text-slate-400">Compra $${item.buyPrice.toFixed(2)} · Venta $${item.salePrice.toFixed(2)} · Margen $${margin.toFixed(2)}</span>
+              </div>
+              <span class="font-bold text-brand-dark shrink-0">${qty} ${item.unit}</span>
+            </div>
+            <div class="h-2 bg-slate-100 rounded-full overflow-hidden">
+              <div class="h-full ${barColor} transition-all" style="width:${pct}%"></div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      const catalogEntries = Object.entries(state.catalog);
+      document.getElementById('catalog-count').textContent = `${catalogEntries.length} producto${catalogEntries.length === 1 ? '' : 's'}`;
+      document.getElementById('catalog-manager').innerHTML = catalogEntries.map(([key, item]) =>
+        `<div class="flex items-center justify-between gap-3 bg-white border border-slate-200 rounded-xl px-3 py-2">
+          <div class="min-w-0">
+            <p class="text-xs font-bold text-slate-700 truncate">${item.name}</p>
+            <p class="text-[10px] text-slate-400">$${item.buyPrice.toFixed(2)} compra · $${item.salePrice.toFixed(2)} venta</p>
+          </div>
+          <button type="button" onclick="removeCatalogItem('${key.replace(/'/g, "\\'")}')" class="text-[11px] font-bold text-rose-600 shrink-0">Eliminar</button>
+        </div>`
+      ).join('') || '<p class="text-xs text-slate-400">No hay productos registrados.</p>';
+
+      const histEl = document.getElementById('tx-history');
+      histEl.innerHTML = state.transactions.map(tx => `
+        <div class="flex justify-between items-start gap-2 border-b border-slate-200/70 pb-1.5 last:border-none last:pb-0">
+          <div>
+            <p class="font-semibold text-slate-800">${tx.title}</p>
+            <p class="text-[11px] text-slate-500">${tx.detail}</p>
+          </div>
+          <span class="text-[10px] text-slate-400 shrink-0">${tx.time}</span>
+        </div>
+      `).join('');
+    }
+
+    function exportRecords() {
+      const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'mi-negocio-registros.json';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function resetDemoData() {
+      state = defaultState();
+      saveState();
+      renderDashboard();
+    }
+
+    /* Checkout */
+    let currentBilling = 'trial';
+    let currentPayment = 'visa-mc';
+
+    function setBillingMode(mode) {
+      currentBilling = mode;
+      const isTrial = mode === 'trial';
+      document.getElementById('mode-trial').className = isTrial
+        ? 'px-4 py-2.5 bg-brand-navy text-white'
+        : 'px-4 py-2.5 bg-white text-slate-600';
+      document.getElementById('mode-direct').className = !isTrial
+        ? 'px-4 py-2.5 bg-brand-navy text-white'
+        : 'px-4 py-2.5 bg-white text-slate-600';
+
+      document.getElementById('trial-notice').classList.toggle('hidden', !isTrial);
+      document.getElementById('paid-fields').classList.toggle('hidden', isTrial);
+      document.getElementById('co-submit-btn').textContent = isTrial
+        ? 'Activar mis 14 días gratis (sin tarjeta)'
+        : 'Solicitar activación de pago';
+    }
+
+    function selectPaymentMethod(method) {
+      currentPayment = method;
+    }
+
+    function syncRequiredFields() {
+      return;
+    }
+
+    function updateCardName(el) {
+      const name = el.value.trim();
+      const cardName = document.getElementById('card-display-name');
+      if (cardName) cardName.innerText = name === '' ? 'NOMBRE APELLIDO' : name;
+    }
+
+    function fmtPhone(el) {
+      let v = el.value.replace(/\D/g, '').slice(0, 8);
+      if (v.length > 4) v = v.slice(0, 4) + '-' + v.slice(4);
+      el.value = v;
+    }
+
+    function fmtCard(el) {
+      let v = el.value.replace(/\D/g, '').slice(0, 16);
+      let formatted = v.match(/.{1,4}/g)?.join(' ') || '';
+      el.value = formatted;
+      document.getElementById('card-display-num').innerText = formatted === '' ? '•••• •••• •••• ••••' : formatted;
+    }
+
+    function fmtExp(el) {
+      let v = el.value.replace(/\D/g, '').slice(0, 4);
+      if (v.length > 2) v = v.slice(0, 2) + '/' + v.slice(2);
+      el.value = v;
+      document.getElementById('card-display-exp').innerText = v === '' ? 'MM/AA' : v;
+    }
+
+    function fmtCvv(el) {
+      el.value = el.value.replace(/\D/g, '').slice(0, 4);
+    }
+
+    function submitSubscription(e) {
+      e.preventDefault();
+      const name = document.getElementById('input-name').value.trim();
+      const wa = document.getElementById('input-wa').value.trim();
+
+      state.subscriptions.push({
+        name,
+        wa: '+503 ' + wa,
+        mode: currentBilling,
+        method: currentBilling === 'trial' ? 'Sin tarjeta (prueba 14 días)' : currentPayment,
+        createdAt: new Date().toISOString()
+      });
+      state.transactions.unshift({
+        id: Date.now(),
+        type: 'cuenta',
+        title: `Cuenta ${currentBilling === 'trial' ? 'prueba 14 días' : 'activa'}: ${name}`,
+        detail: `WhatsApp +503 ${wa}`,
+        time: new Date().toLocaleTimeString('es-SV', { hour: '2-digit', minute: '2-digit' })
+      });
+      saveState();
+      renderDashboard();
+
+      document.getElementById('co-form-card').classList.add('hidden');
+      document.getElementById('co-success-card').classList.remove('hidden');
+      document.getElementById('co-summary-text').textContent = currentBilling === 'trial'
+        ? `Listo, ${name}. Se guardó tu prueba gratuita de 14 días para el número +503 ${wa} sin solicitar tarjeta.`
+        : `Listo, ${name}. Se guardó tu solicitud de activación para el número +503 ${wa}. El cobro todavía no está conectado en esta demo.`;
+    }
+
+    function resetCheckoutView() {
+      document.querySelector('#checkout-view form').reset();
+      document.getElementById('co-success-card').classList.add('hidden');
+      document.getElementById('co-form-card').classList.remove('hidden');
+      setBillingMode('trial');
+    }
+
+    renderDashboard();
+    setBillingMode('trial');
+
+    function toggleSeniorMode() {
+      const enabled = !document.body.classList.contains('senior-mode');
+      document.body.classList.toggle('senior-mode', enabled);
+      localStorage.setItem('mi_negocio_senior_mode', enabled ? '1' : '0');
+      ['senior-toggle'].forEach(id => {
+        const toggle = document.getElementById(id);
+        if (!toggle) return;
+        toggle.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+        toggle.textContent = enabled ? 'Ver normal' : 'Ver grande';
+      });
+      document.querySelectorAll('button[onclick="toggleSeniorMode()"]').forEach(button => {
+        button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+        if (window.innerWidth < 640) button.textContent = enabled ? 'Usar tamaño normal' : 'Activar letras grandes';
+      });
+      if ('speechSynthesis' in window) {
+        speechSynthesis.cancel();
+        speechSynthesis.speak(new SpeechSynthesisUtterance(enabled
+          ? 'Modo fácil activado. Se usan letras grandes y botones grandes.'
+          : 'Tamaño normal activado.'));
+      }
+    }
+
+    if (localStorage.getItem('mi_negocio_senior_mode') === '1') {
+      document.body.classList.add('senior-mode');
+      document.querySelectorAll('button[onclick="toggleSeniorMode()"], #senior-toggle').forEach(button => {
+        button.setAttribute('aria-pressed', 'true');
+        if (button.id === 'senior-toggle') button.textContent = 'Ver normal';
+        else if (window.innerWidth < 640) button.textContent = 'Usar tamaño normal';
+      });
+    }
+
+    window.addEventListener('scroll', () => {
+      document.getElementById('site-header').classList.toggle('scrolled', window.scrollY > 12);
+    }, { passive: true });
+  </script>
+</body>
+</html>

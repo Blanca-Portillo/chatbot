@@ -1,0 +1,60 @@
+{
+  "profit": 542.5,
+  "lastLatencyMs": 0,
+  "catalog": {
+    "arroz": {
+      "name": "Arroz blanco",
+      "unit": "bolsas",
+      "buyPrice": 0.82,
+      "salePrice": 1.25,
+      "stock": 6,
+      "max": 24
+    },
+    "aceite": {
+      "name": "Aceite",
+      "unit": "botellas",
+      "buyPrice": 1.55,
+      "salePrice": 2.25,
+      "stock": 2,
+      "max": 16
+    },
+    "frijol": {
+      "name": "Frijol rojo",
+      "unit": "libras",
+      "buyPrice": 0.72,
+      "salePrice": 1.1,
+      "stock": 12,
+      "max": 40
+    },
+    "sodas": {
+      "name": "Sodas en lata",
+      "unit": "unidades",
+      "buyPrice": 0.55,
+      "salePrice": 0.85,
+      "stock": 7,
+      "max": 30
+    }
+  },
+  "stock": {
+    "arroz": 6,
+    "aceite": 2,
+    "frijol": 12,
+    "sodas": 7
+  },
+  "subscriptions": [],
+  "transactions": [
+    {
+      "id": 1,
+      "type": "resumen",
+      "title": "Estado inicial del negocio",
+      "detail": "Ganancia base $542.50 cargada",
+      "time": "Inicio"
+    }
+  ],
+  "messages": [
+    {
+      "from": "bot",
+      "text": "Listo chele. Escribe o dicta una venta o ingreso de mercadería para guardar en el PMV."
+    }
+  ]
+}
